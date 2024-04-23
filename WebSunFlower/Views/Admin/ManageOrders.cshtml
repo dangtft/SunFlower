@@ -1,0 +1,58 @@
+﻿@model List<WebSunFlower.Models.Order>
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Manage Orders";
+}
+
+<div class="content-page">
+    <div class="content">
+        <!-- Start container-fluid -->
+        <div style="margin-left:50px;" class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="header-title mb-3">Manage Orders</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer Name</th>
+                                    <th>Email</th>
+                                    <th>Order Total</th>
+                                    <th>Order Placed</th>
+                                    <th>Action</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var order in Model)
+                                {
+                                    <tr>
+                                        <td>@order.Id</td>
+                                        <td>@($"{order.FirstName} {order.LastName}")</td>
+                                        <td>@order.Email</td>
+                                        <td>@order.OrderTotal</td>
+                                        <td>@order.OrderPlaced.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                        <td>
+                                            <a href="@Url.Action("OrderDetails", "Admin", new { orderId = order.Id })">Details</a>
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("DeleteOrder", "Admin", new { orderId = order.Id })">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container-fluid -->
+    </div>
+    <!-- end content -->
+</div>

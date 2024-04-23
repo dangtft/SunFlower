@@ -1,0 +1,67 @@
+﻿@model WebSunFlower.Models.Order
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = $"Order Details - Order ID: {Model.Id}";
+}
+
+<div class="content-page">
+    <div class="content">
+        <!-- Start container-fluid -->
+        <div style="margin-left:50px;" class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="header-title mb-3">Order Details - Order ID: @Model.Id</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box">
+                        <dl class="row">
+                            <dt class="col-sm-3">Customer Name:</dt>
+                            <dd class="col-sm-9">@($"{Model.FirstName} {Model.LastName}")</dd>
+
+                            <dt class="col-sm-3">Email:</dt>
+                            <dd class="col-sm-9">@Model.Email</dd>
+
+                            <dt class="col-sm-3">Phone:</dt>
+                            <dd class="col-sm-9">@Model.Phone</dd>
+
+                            <dt class="col-sm-3">Address:</dt>
+                            <dd class="col-sm-9">@Model.Address</dd>
+
+                            <dt class="col-sm-3">Order Total:</dt>
+                            <dd class="col-sm-9">@Model.OrderTotal</dd>
+
+                            <dt class="col-sm-3">Order Placed:</dt>
+                            <dd class="col-sm-9">@Model.OrderPlaced.ToString("yyyy-MM-dd HH:mm:ss")</dd>
+                        </dl>
+
+                        <h5 class="mb-3">Order Items</h5>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var orderDetail in Model.OrderDetails)
+                                {
+                                    <tr>
+                                        <td>@orderDetail.Product?.Name</td>
+                                        <td>@orderDetail.Quantity</td>
+                                        <td>@orderDetail.Price</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container-fluid -->
+    </div>
+    <!-- end content -->
+</div>

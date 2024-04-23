@@ -1,0 +1,61 @@
+﻿@model WebSunFlower.Models.Product
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="content-page">
+    <div class="content">
+        <!-- Start container-fluid -->
+        <div style="margin-left:50px;" class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="header-title mb-3">Add New Product</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box">
+                        <form asp-action="AddProduct" method="post">
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label">Name</label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Detail" class="control-label">Detail</label>
+                                <textarea asp-for="Detail" class="form-control"></textarea>
+                                <span asp-validation-for="Detail" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="ImageUrl" class="control-label">Image URL</label>
+                                <input asp-for="ImageUrl" class="form-control" />
+                                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Price" class="control-label">Price</label>
+                                <input asp-for="Price" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="IsSalingProduct" class="control-label">Is Saling Product</label>
+                                <input asp-for="IsSalingProduct" type="checkbox" />
+                                <span asp-validation-for="IsSalingProduct" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Add Product</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container-fluid -->
+    </div>
+    <!-- end content -->
+</div>

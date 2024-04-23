@@ -1,0 +1,67 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="ab-slider">
+    <img src="/assets/images/slider/2-2.jpg">
+</div>
+<section>
+    <div id="ab-slider" class="breadcrumbs-area position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="breadcrumb-content position-relative section-content">
+                        <h3 class="title-3">Search</h3>
+                        <ul class="title">
+                            <li><a asp-controller="Product" asp-action="Index">Home</a></li>
+                            <i class="fa-solid fa-chevron-up fa-rotate-90"></i>
+                            <li>Search Results</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@model WebSunFlower.ViewModel.SearchViewModel
+
+@if (Model.ProductSearchResults.Any() || Model.BlogSearchResults.Any())
+{
+    <h3 style="color: black;text-align: center;margin-bottom:30px;">Products</h3>
+    @foreach (var item in Model.ProductSearchResults)
+    {
+        <div class="Search-Result">
+            <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id">
+                <img src="@item.ImageUrl">
+            </a>
+            <div class="Search-Content">
+                <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id"><h4>@item.Name</h4></a>
+                <p>@item.Price.ToString("C")</p>
+                <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-pId="@item.Id" class="add-to-cart">ADD TO CART</a>
+            </div>
+        </div>
+    }
+    <br />
+    <br />
+    <h3 style="color: black;text-align: center;margin-bottom:30px;">Blogs</h3>
+    @foreach (var item in Model.BlogSearchResults)
+    {
+        <div class="Search-Result">
+            <a asp-controller="Blog" asp-action="Detail" asp-route-bBlogId="@item.BlogId">
+                <img src="@item.ImgUrl">
+            </a>
+            <div class="Search-Content">
+                <a asp-controller="Blog" asp-action="Detail" asp-route-bBlogId="@item.BlogId"><h4>@item.Title</h4></a>
+                <p>@item.Author</p>
+                <p>@item.Content</p>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p>No results found.</p>
+}
+

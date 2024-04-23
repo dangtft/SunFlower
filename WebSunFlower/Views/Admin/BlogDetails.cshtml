@@ -1,0 +1,59 @@
+﻿@model WebSunFlower.Models.Blog
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="content-page">
+    <div class="content">
+        <!-- Start container-fluid -->
+        <div style="margin-left:50px;" class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="header-title mb-3">Blog Details</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box">
+                        <h5 class="mt-0 font-14 mb-3">Blog Information</h5>
+                        <dl class="row">
+                            <dt class="col-sm-3">Blog Id:</dt>
+                            <dd class="col-sm-9">@Model.BlogId</dd>
+
+                            <dt class="col-sm-3">Image URL:</dt>
+                            <dd class="col-sm-9">@Model.ImgUrl</dd>
+
+                            <dt class="col-sm-3">Title:</dt>
+                            <dd class="col-sm-9">@Model.Title</dd>
+
+                            <dt class="col-sm-3">Content:</dt>
+                            <dd class="col-sm-9">@Model.Content</dd>
+
+                            <dt class="col-sm-3">Content Detail:</dt>
+                            <dd class="col-sm-9">@Model.ContentDetail</dd>
+
+                            <dt class="col-sm-3">Author:</dt>
+                            <dd class="col-sm-9">@Model.Author</dd>
+
+                            <dt class="col-sm-3">Created At:</dt>
+                            <dd class="col-sm-9">@Model.CreatedAt</dd>
+
+                            <dt class="col-sm-3">Is Hot:</dt>
+                            <dd class="col-sm-9">@Model.IsHot</dd>
+
+                            <dt><a asp-controller="Admin" asp-action="AdminBlogDashboard">Back</a></dt>
+
+                            <dd class="col-sm-9"></dd>
+                            <dt><a asp-controller="Admin" asp-action="EditBlog" asp-route-id="@Model.BlogId">Edit</a></dt>
+
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container-fluid -->
+    </div>
+    <!-- end content -->
+</div>
+

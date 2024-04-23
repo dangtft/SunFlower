@@ -1,0 +1,56 @@
+﻿@model List<UserWithRolesVM>
+
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="content-page">
+    <div class="content">
+        <!-- Start container-fluid -->
+        <div style="margin-left:50px;" class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="header-title mb-3">Tất cả người dùng và vai trò</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box">
+                        <table class="table table-hover mails m-0 table table-actions-bar table-centered">
+                            <thead>
+                                <tr>
+                                    <th>ID Người dùng</th>
+                                    <th>Tên người dùng</th>
+                                    <th>Email</th>
+                                    <th>Vai trò</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var user in Model)
+                                {
+                                    <tr>
+                                        <td>@user.UserId</td>
+                                        <td>@user.UserName</td>
+                                        <td>@user.Email</td>
+                                        <td>@string.Join(", ", user.Roles)</td>
+                                        <td>
+                                            <a class="btn btn-primary" href="@Url.Action("EditUserRoles", "Admin", new { userId = user.UserId })">Edit</a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-primary" href="@Url.Action("DeleteUser", "Admin", new { userId = user.UserId })">Delete</a>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container-fluid -->
+    </div>
+    <!-- end content -->
+</div>
